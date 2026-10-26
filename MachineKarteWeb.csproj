@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A79E6C18-3B04-411D-BCDB-E9CD3601C01C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MachineKarteWeb</RootNamespace>
+    <AssemblyName>MachineKarteWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44379</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <WebGreaseLibPath>packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus, Version=4.5.3.3, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.4.5.3.3\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\css\monitoring.css" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Controls\ActionCards\ActionCardEditor.ascx" />
+    <Content Include="Controls\Maintenance\OCAPViewer.ascx" />
+    <Content Include="Controls\Monitoring\BMCaseRow.ascx" />
+    <Content Include="Controls\Monitoring\MachineHistoryPanel.ascx" />
+    <Content Include="Controls\Monitoring\MachineMonitoringCard.ascx" />
+    <Content Include="Controls\Monitoring\SummaryPanel.ascx" />
+    <Content Include="Controls\Reporting\EvidenceGallery.ascx" />
+    <Content Include="Controls\Reporting\FrequencyChart.ascx" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Handlers\EvidenceImage.ashx" />
+    <Content Include="Handlers\TEvidenceImage.ashx" />
+    <Content Include="Handlers\ReportExport.ashx" />
+    <Content Include="Default.aspx" />
+    <Content Include="Pages\ActionCards.aspx" />
+    <Content Include="Pages\AlertDashboard.aspx" />
+    <Content Include="Pages\BMReports.aspx" />
+    <Content Include="Pages\OCAP.aspx" />
+    <Content Include="Pages\EvidenceMaking.aspx" />
+    <Content Include="Pages\Monitoring.aspx" />
+    <Content Include="Pages\McdDashboard.aspx" />
+    <Content Include="Pages\Reports.aspx" />
+    <Content Include="Pages\TEReports.aspx" />
+    <Content Include="Pages\TEvidence.aspx" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="Scripts\jquery-3.7.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.7.0.js" />
+    <Content Include="Scripts\jquery-3.7.0.min.js" />
+    <Content Include="Scripts\jquery-3.7.0.slim.js" />
+    <Content Include="Scripts\jquery-3.7.0.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Site.Master" />
+    <Content Include="Web.config" />
+    <Content Include="Bundle.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controls\ActionCards\ActionCardEditor.ascx.cs">
+      <DependentUpon>ActionCardEditor.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ActionCards\ActionCardEditor.ascx.designer.cs">
+      <DependentUpon>ActionCardEditor.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Maintenance\OCAPViewer.ascx.cs">
+      <DependentUpon>OCAPViewer.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Maintenance\OCAPViewer.ascx.designer.cs">
+      <DependentUpon>OCAPViewer.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Monitoring\BMCaseRow.ascx.cs">
+      <DependentUpon>BMCaseRow.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Monitoring\MachineHistoryPanel.ascx.cs">
+      <DependentUpon>MachineHistoryPanel.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Monitoring\MachineHistoryPanel.ascx.designer.cs">
+      <DependentUpon>MachineHistoryPanel.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Monitoring\MachineMonitoringCard.ascx.cs">
+      <DependentUpon>MachineMonitoringCard.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Monitoring\MachineMonitoringCard.ascx.designer.cs">
+      <DependentUpon>MachineMonitoringCard.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Monitoring\SummaryPanel.ascx.cs">
+      <DependentUpon>SummaryPanel.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Monitoring\SummaryPanel.ascx.designer.cs">
+      <DependentUpon>SummaryPanel.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Reporting\EvidenceGallery.ascx.cs">
+      <DependentUpon>EvidenceGallery.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Reporting\EvidenceGallery.ascx.designer.cs">
+      <DependentUpon>EvidenceGallery.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Reporting\FrequencyChart.ascx.cs">
+      <DependentUpon>FrequencyChart.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Reporting\FrequencyChart.ascx.designer.cs">
+      <DependentUpon>FrequencyChart.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActionCard.cs" />
+    <Compile Include="Models\ActionCardPermissions.cs" />
+    <Compile Include="Models\BMFrequency.cs" />
+    <Compile Include="Models\DashboardMetric.cs" />
+    <Compile Include="Models\EvidenceItem.cs" />
+    <Compile Include="Models\EvidenceReport.cs" />
+    <Compile Include="Models\MachineCardModel.cs" />
+    <Compile Include="Models\McdDashboardModel.cs" />
+    <Compile Include="Models\OCAPItem.cs" />
+    <Compile Include="Models\TEReport.cs" />
+    <Compile Include="Models\TEvidenceModel.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Monitoring.aspx.cs">
+      <DependentUpon>Monitoring.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ActionCards.aspx.cs">
+      <DependentUpon>ActionCards.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ActionCards.aspx.designer.cs">
+      <DependentUpon>ActionCards.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AlertDashboard.aspx.cs">
+      <DependentUpon>AlertDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AlertDashboard.aspx.designer.cs">
+      <DependentUpon>AlertDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BMReports.aspx.cs">
+      <DependentUpon>BMReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\BMReports.aspx.designer.cs">
+      <DependentUpon>BMReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EvidenceMaking.aspx.cs">
+      <DependentUpon>EvidenceMaking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\EvidenceMaking.aspx.designer.cs">
+      <DependentUpon>EvidenceMaking.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Reports.aspx.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Reports.aspx.designer.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TEReports.aspx.cs">
+      <DependentUpon>TEReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\TEReports.aspx.designer.cs">
+      <DependentUpon>TEReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TEvidence.aspx.cs">
+      <DependentUpon>TEvidence.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\TEvidence.aspx.designer.cs">
+      <DependentUpon>TEvidence.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OCAP.aspx.cs">
+      <DependentUpon>OCAP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\OCAP.aspx.designer.cs">
+      <DependentUpon>OCAP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Monitoring.aspx.designer.cs">
+      <DependentUpon>Monitoring.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\McdDashboard.aspx.cs">
+      <DependentUpon>McdDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\McdDashboard.aspx.designer.cs">
+      <DependentUpon>McdDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ActionCardRepository.cs" />
+    <Compile Include="Repositories\EvidenceRepository.cs" />
+    <Compile Include="Repositories\MonitoringRepository.cs" />
+    <Compile Include="Repositories\OCAPRepository.cs" />
+    <Compile Include="Repositories\ReportingRepository.cs" />
+    <Compile Include="Repositories\TEvidenceRepository.cs" />
+    <Compile Include="Services\ActionCardService.cs" />
+    <Compile Include="Services\MonitoringService.cs" />
+    <Compile Include="Services\OCAPService.cs" />
+    <Compile Include="Services\Reporting\EvidenceMakingService.cs" />
+    <Compile Include="Services\Reporting\ExcelTemplateService.cs" />
+    <Compile Include="Services\Reporting\ImageAttachmentService.cs" />
+    <Compile Include="Services\Reporting\ReportAuditService.cs" />
+    <Compile Include="Services\Reporting\TemplateReportExportService.cs" />
+    <Compile Include="Services\Reporting\TemplateReportExportService.Form3Processes.cs" />
+    <Compile Include="Services\Reporting\TEReportService.cs" />
+    <Compile Include="Services\Reporting\TEvidenceService.cs" />
+    <Compile Include="Services\TrendAnalysisService.cs" />
+    <Compile Include="Handlers\EvidenceImageHandler.cs" />
+    <Compile Include="Handlers\TEvidenceImageHandler.cs" />
+    <Compile Include="Handlers\ReportExportHandler.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Assets\js\" />
+    <Folder Include="TempData\GeneratedPdf\" />
+    <Folder Include="TempData\GeneratedReports\" />
+    <Folder Include="TempData\TEReports\" />
+    <Folder Include="TXT\" />
+    <Folder Include="Uploads\ActionCardAttachments\" />
+    <Folder Include="Uploads\EvidenceImages\" />
+    <Folder Include="Uploads\TempEvidenceFiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.0.min.map" />
+    <Content Include="Templates\EvidenceMaking\EvidenceMaking_DB.xlsx" />
+    <Content Include="Templates\EvidenceMaking\EvidenceMaking_DC.xlsx" />
+    <Content Include="Templates\EvidenceMaking\EvidenceMaking_EDS.xlsx" />
+    <Content Include="Templates\EvidenceMaking\EvidenceMaking_FL.xlsx" />
+    <Content Include="Templates\EvidenceMaking\EvidenceMaking_FT.xlsx" />
+    <Content Include="Templates\EvidenceMaking\EvidenceMaking_MEMS.xlsx" />
+    <Content Include="Templates\EvidenceMaking\EvidenceMaking_MP.xlsx" />
+    <Content Include="Templates\EvidenceMaking\EvidenceMaking_PL.xlsx" />
+    <Content Include="Templates\EvidenceMaking\EvidenceMaking_Sing.xlsx" />
+    <Content Include="Templates\EvidenceMaking\EvidenceMaking_TP.xlsx" />
+    <Content Include="Templates\EvidenceMaking\EvidenceMaking_WB.xlsx" />
+    <Content Include="Templates\EvidenceMaking\DBTemplate.xlsx" />
+    <Content Include="Templates\EvidenceMaking\DCTemplate2.xlsx" />
+    <Content Include="Templates\EvidenceMaking\EDSTemplate.xlsx" />
+    <Content Include="Templates\EvidenceMaking\FLTemplate2.xlsx" />
+    <Content Include="Templates\EvidenceMaking\FTTemplate.xlsx" />
+    <Content Include="Templates\EvidenceMaking\MEMS FT-TPTemplate.xlsx" />
+    <Content Include="Templates\EvidenceMaking\MPTemplate.xlsx" />
+    <Content Include="Templates\EvidenceMaking\PLTemplate.xlsx" />
+    <Content Include="Templates\EvidenceMaking\SINGTemplate.xlsx" />
+    <Content Include="Templates\EvidenceMaking\TPTemplate.xlsx" />
+    <Content Include="Templates\EvidenceMaking\WBTemplate.xlsx" />
+    <Content Include="Templates\TE\CWC.xlsx" />
+    <Content Include="Templates\TE\EDS-CSPTemplate.xlsx" />
+    <Content Include="Templates\TE\TETemplate.xlsx" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>20413</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44379/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
