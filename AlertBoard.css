@@ -1,0 +1,254 @@
+/* ============================================================
+   AlertBoard.css — E-Karte  |  Repeat BM Alert Board
+   Depends on site.css for tokens.
+   ============================================================ */
+
+/* ── Page shell: fills viewport below nav ─────────────────── */
+.ab-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* ── Toolbar ──────────────────────────────────────────────── */
+.ab-toolbar {
+    flex-shrink: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--clr-surface);
+    border-bottom: 1px solid var(--clr-border);
+    box-shadow: var(--shadow-sm);
+}
+
+    /* Style bare labels inside toolbar */
+    .ab-toolbar label {
+        font-size: var(--fz-xs);
+        font-weight: 700;
+        color: var(--clr-text-muted);
+        text-transform: uppercase;
+        letter-spacing: .05em;
+        white-space: nowrap;
+    }
+
+    /* Style bare inputs/selects inside toolbar (AlertBoard has no class on them) */
+    .ab-toolbar input[type="datetime-local"],
+    .ab-toolbar select {
+        font-family: var(--font-ui);
+        font-size: var(--fz-md);
+        color: var(--clr-text);
+        background: var(--clr-surface);
+        border: 1px solid var(--clr-border);
+        border-radius: var(--radius-sm);
+        padding: 4px 8px;
+        height: 28px;
+        outline: none;
+        transition: border-color var(--t-fast), box-shadow var(--t-fast);
+    }
+
+        .ab-toolbar input:focus,
+        .ab-toolbar select:focus {
+            border-color: var(--clr-brand);
+            box-shadow: 0 0 0 2px rgba(24,96,196,.18);
+        }
+
+/* Progress bar */
+.ab-progress {
+    flex: 1;
+    min-width: 100px;
+    height: 6px;
+    background: var(--clr-border);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.ab-progress-inner {
+    height: 100%;
+    width: 0;
+    background: var(--clr-brand);
+    transition: width .1s linear;
+    border-radius: 99px;
+}
+
+/* ── Grid panel: takes remaining height, scrolls both axes ── */
+.ab-panel {
+    flex: 1 1 0;
+    overflow: auto;
+    width: 100%;
+    background: var(--clr-surface);
+    position: relative;
+}
+
+/* Row layout: [label | 9 location cols | total] */
+.ab-header-row,
+.ab-proc-row {
+    display: grid;
+    grid-template-columns: 72px repeat(9, minmax(72px, 1fr)) 66px;
+    min-width: max-content;
+    width: 100%;
+    border-bottom: 1px solid var(--clr-border);
+}
+
+    .ab-proc-row:last-child { border-bottom: none; }
+
+/* Sticky header */
+.ab-header-row {
+    background: var(--clr-dark-panel);
+    color: var(--clr-dark-text);
+    font-weight: 700;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.ab-hdr-process,
+.ab-hdr-loc,
+.ab-hdr-total {
+    padding: 7px 4px;
+    font-size: var(--fz-xs);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    border-right: 1px solid var(--clr-dark-border);
+}
+
+/* Cells */
+.ab-cell-label {
+    padding: 6px 10px;
+    font-weight: 700;
+    background: var(--clr-bg);
+    border-right: 1px solid var(--clr-border-dark);
+    display: flex;
+    align-items: center;
+    font-size: var(--fz-xs);
+    color: var(--clr-text-muted);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    white-space: nowrap;
+}
+
+.ab-cell {
+    text-align: center;
+    padding: 6px 4px;
+    border-right: 1px solid var(--clr-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--fz-md);
+    font-variant-numeric: tabular-nums;
+}
+
+.ab-cell-empty {
+    background: var(--clr-bg);
+    color: var(--clr-text-faint);
+}
+
+.ab-cell-active {
+    background: var(--clr-surface);
+    cursor: default;
+}
+
+    .ab-cell-active.ab-alert {
+        background: var(--clr-warn-bg);
+        color: var(--clr-danger);
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+        .ab-cell-active.ab-alert:hover { background: #fde68a; }
+
+.ab-cell-total {
+    background: var(--clr-info-bg);
+    font-weight: 700;
+    color: var(--clr-info);
+}
+
+.ab-cell-grand {
+    background: var(--clr-brand);
+    color: #fff;
+    font-weight: 700;
+}
+
+/* Totals row */
+.ab-totals-row .ab-cell-label {
+    background: var(--clr-success-bg);
+    color: var(--clr-success);
+    font-weight: 700;
+}
+
+/* ── Drilldown panel (floating) ───────────────────────────── */
+.ab-drilldown {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(420px, 95vw);
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    z-index: 300;
+    overflow: hidden;
+}
+
+.ab-drilldown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background: var(--clr-dark-panel);
+    color: var(--clr-dark-text);
+    font-weight: 700;
+    font-size: var(--fz-lg);
+}
+
+.ab-drilldown-btns {
+    display: flex;
+    gap: 6px;
+}
+
+.ab-btn {
+    padding: 3px 10px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: var(--fz-sm);
+    font-family: var(--font-ui);
+    font-weight: 600;
+    background: rgba(255,255,255,.15);
+    color: #fff;
+    transition: background var(--t-fast);
+}
+    .ab-btn:hover { background: rgba(255,255,255,.28); }
+
+.ab-btn-primary { background: var(--clr-brand); }
+    .ab-btn-primary:hover { background: var(--clr-brand-dark); }
+
+.ab-machine-list {
+    list-style: none;
+    padding: 4px 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.ab-machine-item {
+    padding: 7px 14px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--clr-border);
+    font-size: var(--fz-md);
+    transition: background var(--t-fast);
+}
+    .ab-machine-item:last-child { border-bottom: none; }
+    .ab-machine-item:hover { background: var(--clr-brand-light); }
+    .ab-machine-item.selected {
+        background: var(--clr-brand-light);
+        color: var(--clr-brand);
+        font-weight: 700;
+        border-left: 3px solid var(--clr-brand);
+    }

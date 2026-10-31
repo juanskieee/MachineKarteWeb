@@ -1,0 +1,296 @@
+/* ============================================================
+   McdMonitoring.css — E-Karte  |  MCD Monitoring grid
+   Depends on site.css for tokens.
+   ============================================================ */
+
+/* ── Page shell: fills the viewport below the nav ────────── */
+.mcd-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;          /* fills .site-main which is calc(100vh - 42px) */
+    overflow: hidden;      /* children scroll individually                  */
+    gap: 0;
+}
+
+/* ── Filter bar (sticky, never scrolls away) ──────────────── */
+.mcd-filter-bar {
+    flex-shrink: 0;
+    padding: 8px 12px;
+    background: var(--clr-surface);
+    border-bottom: 1px solid var(--clr-border);
+    box-shadow: var(--shadow-sm);
+}
+
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    align-items: flex-end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+    .filter-group label {
+        font-size: var(--fz-xs);
+        font-weight: 700;
+        color: var(--clr-text-muted);
+        text-transform: uppercase;
+        letter-spacing: .05em;
+    }
+
+.filter-btn-group    { justify-content: flex-end; }
+
+.filter-status-group {
+    margin-left: auto;
+    align-self: center;
+}
+
+.mcd-status       { font-size: var(--fz-sm); color: var(--clr-text-muted); white-space: nowrap; }
+.mcd-status-error { color: var(--clr-danger); font-weight: 600; }
+
+/* ── Progress bar (sits below filter row) ─────────────────── */
+.mcd-progress {
+    height: 3px;
+    background: var(--clr-border);
+    margin-top: 6px;
+    overflow: hidden;
+    border-radius: 99px;
+}
+
+.mcd-progress-inner {
+    height: 100%;
+    width: 0;
+    background: var(--clr-brand);
+    transition: width .3s ease;
+    border-radius: 99px;
+}
+
+/* ── Grid wrapper: takes remaining height, scrolls both axes  */
+.mcd-grid-wrapper {
+    flex: 1 1 0;
+    overflow: auto;          /* both axes                                  */
+    width: 100%;
+    background: var(--clr-surface);
+    border-top: none;
+    position: relative;
+}
+
+/* ── Grid itself: as wide as content needs ────────────────── */
+.mcd-grid {
+    min-width: max-content;  /* expands to fit all columns, no layout cap  */
+    width: 100%;
+}
+
+/* ── Grid rows ────────────────────────────────────────────── */
+.mcd-header-row,
+.mcd-grid-row,
+.mcd-total-row {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--clr-border);
+}
+
+    .mcd-grid-row:last-child { border-bottom: none; }
+
+.mcd-header-row {
+    background: var(--clr-dark-panel);
+    color: var(--clr-dark-text);
+    font-weight: 700;
+    font-size: var(--fz-xs);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.mcd-total-row {
+    background: var(--clr-bg);
+    font-weight: 700;
+    border-top: 2px solid var(--clr-border-dark);
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+}
+
+/* ── Column widths ────────────────────────────────────────── */
+.mcd-process-col { flex: 0 0 72px;  min-width: 72px; }
+.mcd-loc-col     { flex: 0 0 88px;  min-width: 88px; } /* fixed, not 1fr, so grid is predictable */
+.mcd-total-col   { flex: 0 0 72px;  min-width: 72px; }
+
+/* ── Cell base ────────────────────────────────────────────── */
+.mcd-header,
+.mcd-proc-label,
+.mcd-cell,
+.mcd-proc-total,
+.mcd-total-label,
+.mcd-total-cell {
+    padding: 6px 8px;
+    text-align: center;
+    border-right: 1px solid var(--clr-border);
+    font-size: var(--fz-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mcd-header { border-right-color: var(--clr-dark-border); }
+
+.mcd-proc-label {
+    font-weight: 700;
+    background: var(--clr-bg);
+    text-align: left;
+    justify-content: flex-start;
+    padding-left: .75rem;
+    color: var(--clr-text-muted);
+    font-size: var(--fz-xs);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    border-right-color: var(--clr-border-dark);
+}
+
+.mcd-total-label {
+    font-weight: 700;
+    text-align: left;
+    justify-content: flex-start;
+    padding-left: .75rem;
+    border-right-color: var(--clr-border-dark);
+}
+
+.mcd-grid-empty {
+    padding: 2.5rem 1rem;
+    text-align: center;
+    color: var(--clr-text-muted);
+    font-style: italic;
+}
+
+/* ── Cell state variants ──────────────────────────────────── */
+.mcd-cell { transition: background var(--t-fast); }
+
+.mcd-cell-na {
+    background: var(--clr-bg);
+    color: var(--clr-text-faint);
+    cursor: default;
+}
+
+.mcd-cell-zero { color: var(--clr-text-faint); }
+
+.mcd-cell-hot {
+    background: var(--clr-warn-bg);
+    color: var(--clr-danger);
+    font-weight: 700;
+}
+
+.mcd-cell-clickable { cursor: pointer; }
+    .mcd-cell-clickable:hover {
+        background: #fde68a;
+        outline: 2px solid var(--clr-warn);
+        outline-offset: -2px;
+    }
+
+.mcd-proc-total {
+    background: var(--clr-bg);
+    font-weight: 600;
+    border-right-color: var(--clr-border);
+}
+
+.mcd-total-cell { font-weight: 700; }
+.mcd-total-hot  { color: var(--clr-danger); }
+
+/* ── Machine list modal ───────────────────────────────────── */
+.mcd-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.40);
+    z-index: 100;
+}
+
+.mcd-machine-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: var(--clr-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    z-index: 101;
+    width: 360px;
+    max-width: 95vw;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.mcd-machine-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background: var(--clr-dark-panel);
+    color: var(--clr-dark-text);
+    font-weight: 700;
+    font-size: var(--fz-xl);
+    flex-shrink: 0;
+}
+
+.mcd-panel-close {
+    background: none;
+    border: none;
+    color: var(--clr-dark-muted);
+    font-size: 1.3rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-ui);
+    transition: background var(--t-fast), color var(--t-fast);
+}
+    .mcd-panel-close:hover { background: rgba(255,255,255,.12); color: #fff; }
+
+.mcd-machine-list {
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+    max-height: 340px;
+    overflow-y: auto;
+}
+
+.mcd-list-item {
+    padding: 7px 14px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--clr-border);
+    font-size: var(--fz-md);
+    transition: background var(--t-fast);
+}
+    .mcd-list-item:last-child { border-bottom: none; }
+    .mcd-list-item:hover { background: var(--clr-brand-light); }
+    .mcd-list-item.selected {
+        background: var(--clr-brand-light);
+        color: var(--clr-brand);
+        font-weight: 700;
+        border-left: 3px solid var(--clr-brand);
+    }
+
+.mcd-list-empty,
+.mcd-list-error {
+    padding: 1rem;
+    text-align: center;
+    color: var(--clr-text-muted);
+    font-style: italic;
+}
+.mcd-list-error { color: var(--clr-danger); font-style: normal; }
+
+.mcd-panel-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: .5rem;
+    padding: 10px 14px;
+    border-top: 1px solid var(--clr-border);
+    background: var(--clr-bg);
+    flex-shrink: 0;
+}

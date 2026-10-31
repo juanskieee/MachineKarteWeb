@@ -1,0 +1,71 @@
+@page
+@model MachineKarte.Web.Pages.BmAnalyticsModel
+@{
+    ViewData["Title"] = "BM Analytics";
+    Layout = "_Layout";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/Assets/css/BmAnalytics.css" asp-append-version="true" />
+}
+
+<!--
+    BM Analytics — process × location grid of MCD machines with action cards.
+    Mirrors Form12.vb (NewLoadColor path only).
+    NOTE: Bootstrap has been removed — all classes are project-native.
+-->
+
+<div class="bma-page">
+
+    <!-- ── Toolbar ─────────────────────────────────────────────────────── -->
+    <div class="bma-toolbar">
+        <div class="bma-toolbar-group">
+            <label for="dtFrom">Date From</label>
+            <input type="datetime-local" id="dtFrom" class="form-control"
+                   value="@DateTime.Today.AddDays(-7).ToString("yyyy-MM-ddTHH:mm")" />
+        </div>
+        <div class="bma-toolbar-group">
+            <label for="dtTo">Date To</label>
+            <input type="datetime-local" id="dtTo" class="form-control"
+                   value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
+        </div>
+        <div class="bma-toolbar-group">
+            <label for="selMode">Mode</label>
+            <select id="selMode" class="form-control">
+                <option value="EEE">EEE</option>
+                <option value="TE">TE</option>
+            </select>
+        </div>
+        <div class="bma-toolbar-group" style="justify-content:flex-end;">
+            <label>&nbsp;</label>
+            <button id="btnSearch" class="btn btn-primary" type="button">
+                &#128269; Search
+            </button>
+        </div>
+        <span class="bma-status" id="lblStatus"></span>
+    </div>
+
+    <!-- ── Grid container ──────────────────────────────────────────────── -->
+    <div class="bma-grid-wrapper" id="gridWrapper">
+        <div class="bma-empty" id="noData">
+            Select a date range and click <strong>Search</strong>.
+        </div>
+    </div>
+
+    <!-- ── Machine flyout panel ────────────────────────────────────────── -->
+    <div class="bma-flyout" id="flyoutPanel" style="display:none;">
+        <div class="bma-flyout-header">
+            <span id="flyoutTitle">Machines</span>
+            <button class="bma-flyout-close" id="btnCloseFlyout">&times;</button>
+        </div>
+        <ul class="bma-flyout-list" id="flyoutList"></ul>
+        <div class="bma-flyout-footer">
+            <button class="btn btn-primary" id="btnViewMonitoring">View in Monitoring</button>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="~/Assets/js/BmAnalytics.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,256 @@
+/* ============================================================
+   BmAnalytics.css — E-Karte  |  BM Analytics grid
+   Depends on site.css for tokens.
+   NOTE: BmAnalytics.cshtml used Bootstrap classes (row, col-auto,
+         btn-sm, card-header, list-group, etc.) — Bootstrap is NOT
+         in this project. All those classes are dead weight; the
+         CSHTML has been rewritten to use only project classes.
+   ============================================================ */
+
+/* ── Page shell: fills viewport below nav ─────────────────── */
+.bma-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* ── Toolbar ──────────────────────────────────────────────── */
+.bma-toolbar {
+    flex-shrink: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--clr-surface);
+    border-bottom: 1px solid var(--clr-border);
+    box-shadow: var(--shadow-sm);
+}
+
+.bma-toolbar-group {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+    .bma-toolbar-group label {
+        font-size: var(--fz-xs);
+        font-weight: 700;
+        color: var(--clr-text-muted);
+        text-transform: uppercase;
+        letter-spacing: .05em;
+    }
+
+.bma-status {
+    margin-left: auto;
+    align-self: center;
+    font-size: var(--fz-sm);
+    color: var(--clr-text-muted);
+}
+
+/* ── Grid wrapper: takes remaining height, scrolls both axes  */
+.bma-grid-wrapper {
+    flex: 1 1 0;
+    overflow: auto;
+    width: 100%;
+    background: var(--clr-surface);
+    position: relative;
+}
+
+/* ── Empty state ──────────────────────────────────────────── */
+.bma-empty {
+    padding: 3rem 1rem;
+    text-align: center;
+    color: var(--clr-text-muted);
+    font-style: italic;
+}
+
+/* ── Grid table ───────────────────────────────────────────── */
+.bma-table {
+    border-collapse: collapse;
+    font-size: var(--fz-sm);
+    min-width: max-content;
+    width: 100%;
+}
+
+/* Sticky header row */
+.bma-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.bma-hdr-process,
+.bma-hdr-loc,
+.bma-hdr-total {
+    background: var(--clr-dark-panel);
+    color: var(--clr-dark-text);
+    text-align: center;
+    font-size: var(--fz-xs);
+    font-weight: 700;
+    padding: 7px 8px;
+    white-space: nowrap;
+    border-right: 1px solid var(--clr-dark-border);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.bma-hdr-total {
+    background: var(--clr-dark-surface);
+}
+
+/* Process label column */
+.bma-proc-label {
+    font-weight: 700;
+    background: var(--clr-bg);
+    padding: 6px 10px;
+    min-width: 68px;
+    white-space: nowrap;
+    color: var(--clr-text-muted);
+    font-size: var(--fz-xs);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    border-right: 1px solid var(--clr-border-dark);
+    border-bottom: 1px solid var(--clr-border);
+}
+
+/* Data cells */
+.bma-cell {
+    text-align: center;
+    padding: 6px 8px;
+    min-width: 66px;
+    font-weight: 700;
+    border-right: 1px solid var(--clr-border);
+    border-bottom: 1px solid var(--clr-border);
+    font-variant-numeric: tabular-nums;
+}
+
+.bma-cell-na {
+    background: var(--clr-bg);
+    color: var(--clr-text-faint);
+    font-weight: 400;
+}
+
+.bma-cell-zero {
+    background: var(--clr-surface);
+    color: var(--clr-text-faint);
+    font-weight: 400;
+}
+
+.bma-cell-active {
+    background: var(--clr-warn-bg);
+    color: var(--clr-warn);
+    cursor: pointer;
+    transition: background var(--t-fast);
+}
+    .bma-cell-active:hover { background: #fde68a; }
+
+/* Row total */
+.bma-row-total {
+    text-align: center;
+    font-weight: 700;
+    background: var(--clr-info-bg);
+    color: var(--clr-info);
+    border-right: 1px solid var(--clr-border);
+    border-bottom: 1px solid var(--clr-border);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Totals footer row */
+.bma-total-row td {
+    background: var(--clr-bg);
+    font-weight: 700;
+    text-align: center;
+    border-top: 2px solid var(--clr-border-dark);
+    border-right: 1px solid var(--clr-border);
+    font-variant-numeric: tabular-nums;
+}
+
+.bma-col-total { color: var(--clr-info); }
+
+.bma-grand-total {
+    background: var(--clr-brand) !important;
+    color: #fff !important;
+    font-size: var(--fz-xl);
+}
+
+/* ── Flyout machine panel ─────────────────────────────────── */
+.bma-flyout {
+    position: fixed;
+    right: 1.25rem;
+    top: 100px;
+    width: 260px;
+    z-index: 1050;
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.bma-flyout-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 12px;
+    background: var(--clr-dark-panel);
+    color: var(--clr-dark-text);
+    font-weight: 700;
+    font-size: var(--fz-md);
+    flex-shrink: 0;
+}
+
+.bma-flyout-close {
+    background: none;
+    border: none;
+    color: var(--clr-dark-muted);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 2px 5px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-ui);
+    transition: background var(--t-fast), color var(--t-fast);
+}
+    .bma-flyout-close:hover { background: rgba(255,255,255,.12); color: #fff; }
+
+.bma-flyout-list {
+    list-style: none;
+    padding: 4px 0;
+    max-height: 300px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.bma-mc-item {
+    cursor: pointer;
+    font-size: var(--fz-md);
+    padding: 7px 14px;
+    border-bottom: 1px solid var(--clr-border);
+    transition: background var(--t-fast);
+    color: var(--clr-text);
+}
+    .bma-mc-item:last-child { border-bottom: none; }
+    .bma-mc-item:hover { background: var(--clr-brand-light); }
+    .bma-mc-item.active {
+        background: var(--clr-brand-light);
+        color: var(--clr-brand);
+        font-weight: 700;
+        border-left: 3px solid var(--clr-brand);
+    }
+
+.bma-flyout-footer {
+    padding: 8px 12px;
+    border-top: 1px solid var(--clr-border);
+    background: var(--clr-bg);
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .bma-flyout { right: .5rem; width: calc(100vw - 1rem); }
+}
